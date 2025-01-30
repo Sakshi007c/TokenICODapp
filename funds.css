@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 100px;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #090909, #2c2c54);
+    color: white;
+  }
+  
+  .transfer-section {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 800px;
+    background-color: #222;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+  
+  .transfer-section h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .transfer-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .input-field {
+    width: 80%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+  }
+  
+  .input-field::placeholder {
+    color: #aaa;
+  }
+  
+  .transfer-btn {
+    width: 80%;
+    padding: 12px;
+    background-color: #6a0dad;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .transfer-btn:hover {
+    background-color: #550e78;
+  }
+  
+  .images {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+  
+  .left-image {
+    position: absolute;
+    left: -60px;
+    width: 80px;
+  }
+  
+  .right-image {
+    position: absolute;
+    right: -60px;
+    width: 80px;
+  }

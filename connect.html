@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metamask Wallet Connection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+      
+    }
+    .buy-token-section {
+      align-items: center;
+      margin-left: 30%;
+      margin-right: 30%;
+      background-color: #7474c5;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .notification {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #4caf50;
+      color: white;
+      font-size: 18px;
+      border-radius: 5px;
+      display: none;
+    }
+
+    #walletInfo {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body background="images/bg.jpg">
+  <section class="buy-token-section">
+    <h1>Click to Connect With Metamask</h1>
+  <div class="container">
+    <button id="connectButton">Connect MetaMask Wallet</button>
+    <div id="notification" class="notification">Metamask Wallet Connected</div>
+    <div id="walletInfo"></div>
+  </div>
+
+  <script>
+    const connectButton = document.getElementById("connectButton");
+    const walletInfo = document.getElementById("walletInfo");
+
+    connectButton.addEventListener("click", async () => {
+      if (typeof window.ethereum !== "undefined") {
+        try {
+          const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+          const account = accounts[0];
+          
+          // Display the connected wallet address
+          walletInfo.innerHTML = `Wallet connected: <a href="https://etherscan.io/address/${account}" target="_blank">${account}</a>`;
+          
+          // Show the notification
+          const notification = document.getElementById('notification');
+          notification.style.display = 'block';
+
+          // Hide the notification after 3 seconds
+          setTimeout(() => {
+            notification.style.display = 'none';
+          }, 3000);
+
+        } catch (error) {
+          if (error.code === 4001) {
+            console.log("User denied account access");
+          } else {
+            console.error(error);
+          }
+        }
+      } else {
+        window.open("https://metamask.io/download/", "_blank");
+      }
+    });
+  </script>
+</body>
+</html>
+
